@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No on TV</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #444;
+    }
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .toggle-container label {
+      font-size: 16px;
+    }
+    .toggle-container input {
+      margin-left: 10px;
+      transform: scale(1.2);
+    }
+    .description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      text-align: center;
+      color: #888;
+    }
+    footer a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>No on TV</h1>
+  <div class="toggle-container">
+    <label for="toggle-feature">Enable Protection</label>
+    <input type="checkbox" id="toggle-feature" />
+  </div>
+  <p class="description">
+    By enabling this feature, the "Stream on TV" buttons will be replaced with protective cover
+  </p>
+  <button id="save-settings">Save Settings</button>
+  <footer>
+    <p>
+      Need help? <a href="https://discord.gg/3zAesDHGJv" target="_blank">Contact Support</a>
+    </p>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>
