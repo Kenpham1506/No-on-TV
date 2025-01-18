@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "No on TV",
-  "version": "1.0.0.1",
+  "version": "1.0.0.2",
   "description": "Disables the 'Play on TV' button to help prevent accidental casting to your TV.",
   "permissions": ["scripting", "storage"],
   "host_permissions": ["<all_urls>"],
