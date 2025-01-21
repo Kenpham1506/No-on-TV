@@ -57,11 +57,6 @@ chrome.storage.sync.get("enabled", ({ enabled }) => {
           }
         });
 
-        // Add click event to open popup
-        customButton.addEventListener("click", () => {
-          console.log("Custom button clicked. Feature is enabled.");
-        });
-
         // Replace the original element with the new custom button
         element.replaceWith(customButton);
       });
