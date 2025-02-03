@@ -6,8 +6,31 @@ chrome.storage.sync.get("enabled", ({ enabled }) => {
   toggleFeature.checked = enabled;
 });
 
-// Listen for changes to the checkbox and save the new state
-toggleFeature.addEventListener("change", () => {
-  console.log("Toggle changed. New feature state:", toggleFeature.checked);
-  chrome.storage.sync.set({ enabled: toggleFeature.checked });
+document.addEventListener("DOMContentLoaded", function () {
+  const sendButton = document.getElementById("send-button");
+
+  sendButton.addEventListener("click", function () {
+    const webhookUrl = "https://discord.com/api/webhooks/1336075064562417725/a4ElwNVVWA7ZCZcojPyXIaPqGZ2R17KoNOeggFJHiUSTRSj4tKjczyvzPcQrvuaLeoRo";
+
+    chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
+      const currentTab = tabs.length ? tabs[0].url : "No active tab found";
+      const content = currentTab;
+
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Sent successfully!");
+        } else {
+          alert("Failed to send.");
+        }
+      })
+      .catch(error => {
+        alert("Error sending: " + error);
+      });
+    });
+  });
 });

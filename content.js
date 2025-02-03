@@ -7,61 +7,65 @@ chrome.storage.sync.get("enabled", ({ enabled }) => {
 
   // Observer to detect dynamic elements (e.g., video player controls)
   const observer = new MutationObserver(() => {
-    const elements = document.querySelectorAll(".ytp-remote-button, .mgp_chromecast, .player-icon-f.pif-chromecast, #chromecast, [id^='chromecast'], [class*='chromecast']");
+    const elements = document.querySelectorAll('.ytp-remote-button, .mgp_chromecast, #chromecast, .player-icon-f.pif-chromecast, [aria-label="Start Casting"]');
     if (elements.length > 0) {
-      console.log(`Found ${elements.length} elements to replace.`);
+      console.log(`Found ${elements.length} elements to modify.`);
       observer.disconnect(); // Stop observing after finding elements
 
       elements.forEach((element) => {
-        console.log("Replacing element with custom button:", element);
 
-        // Create the custom button
-        const customButton = document.createElement("button");
-        customButton.title = "You are protected by No on TV";
-        customButton.style.cursor = "pointer";
-        customButton.style.position = "relative";
-        customButton.style.top = "-12px";
-        customButton.style.background = "none";
-        customButton.style.border = "none";
-        customButton.style.padding = "5px 10 px 5px 5px";
+        // legacy replace code
+        // console.log("Replacing element with custom button:", element);
+        // const Class = element.classList;
 
-        // Create image element for the placeholder
-        const img = document.createElement("img");
-        img.src = "https://i.imgur.com/fjz56CT.png"; // External image URL
-        img.alt = "Protected Button";
-        img.style.width = "100%";
+        // // Create the custom button
+        // const customButton = document.createElement("button");
+        // customButton.className = Class;
+        // customButton.title = "You are protected by No on TV";
+        // // customButton.style.cursor = "pointer";
+        // // customButton.style.background = "none";
+        // // customButton.style.border = "none";
+        // // customButton.style.display = 'flex';
+        // // customButton.style.alignItems = 'center';
+        // // customButton.style.justifyContent = 'center';
 
-        customButton.appendChild(img);
+        // // Create image element for the placeholder
+        // const img = document.createElement("img");
+        // img.src = "https://i.imgur.com/fjz56CT.png"; // External image URL
+        // img.alt = "Protected Button";
+        // // img.style.width = "100%";
 
-        // Add hover tooltip
-        customButton.addEventListener("mouseover", () => {
-          const tooltip = document.createElement("div");
-          tooltip.textContent = "You are protected by No on TV";
-          tooltip.style.position = "absolute";
-          tooltip.style.background = "#333";
-          tooltip.style.color = "#fff";
-          tooltip.style.padding = "5px";
-          tooltip.style.borderRadius = "5px";
-          tooltip.style.top = `${customButton.offsetTop - 30}px`;
-          tooltip.style.left = `${customButton.offsetLeft}px`;
-          tooltip.classList.add("custom-tooltip");
-          document.body.appendChild(tooltip);
-          console.log("Tooltip added.");
-        });
+        // customButton.appendChild(img);
 
-        customButton.addEventListener("mouseout", () => {
-          const tooltip = document.querySelector(".custom-tooltip");
-          if (tooltip) {
-            tooltip.remove();
-            console.log("Tooltip removed.");
-          }
-        });
+        // // Add hover tooltip
+        // customButton.addEventListener("mouseover", () => {
+        //   const tooltip = document.createElement("div");
+        //   tooltip.textContent = "You are protected by No on TV";
+        //   tooltip.style.position = "absolute";
+        //   tooltip.style.background = "#333";
+        //   tooltip.style.color = "#fff";
+        //   tooltip.style.padding = "5px";
+        //   tooltip.style.borderRadius = "5px";
+        //   tooltip.style.top = `${customButton.offsetTop - 30}px`;
+        //   tooltip.style.left = `${customButton.offsetLeft}px`;
+        //   tooltip.classList.add("custom-tooltip");
+        //   document.body.appendChild(tooltip);
+        //   console.log("Tooltip added.");
+        // });
 
-        // Replace the original element with the new custom button
-        element.replaceWith(customButton);
+        // customButton.addEventListener("mouseout", () => {
+        //   const tooltip = document.querySelector(".custom-tooltip");
+        //   if (tooltip) {
+        //     tooltip.remove();
+        //     console.log("Tooltip removed.");
+        //   }
+        // });
+
+        // element.replaceWith(customButton);
+        element.remove();
       });
     } else {
-      console.log("No target elements found to replace.");
+      console.log("No target elements found to modify.");
     }
   });
 
